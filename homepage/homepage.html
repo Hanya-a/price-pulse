@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Price-Pulse – Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../homepage/homepage.css" />
+  </head>
+
+  <body>
+    <!-- HEADER / NAVBAR: Contains the logo, navigation links, and login/register buttons -->
+    <header>
+      <div>
+        <a href="../homepage/homepage.html">Price-Pulse</a>
+      </div>
+
+      <nav>
+        <a href="../homepage/homepage.html">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="../trending/trending.html">Trending</a>
+        <a href="../contact/contact1.0.html">Contact</a>
+      </nav>
+
+      <div>
+        <a href="../auth/login.html">Login</a>
+        <a href="../auth/register.html">Register</a>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT: Wraps the core page content -->
+    <main>
+      <!-- HERO SECTION: Displays the main title, description, and search bar -->
+      <section>
+        <h1>
+          <span>Price-Pulse</span>
+          <span>Track Prices. Save Money.</span>
+        </h1>
+
+        <p>
+          Find the cheapest grocery and pharmacy items across Egypt’s stores in
+          one place.
+        </p>
+
+        <!-- SEARCH FORM: Allows users to search for products -->
+        <form onsubmit="searchProducts(); return false;">
+          <input type="search" id="searchInput" name="q" placeholder="Search for products..." />
+
+          <button type="button" onclick="searchProducts()">Search</button>
+        </form>
+                
+
+        <button type="button" onclick="findNearestShop()">Use my location to find nearest shop</button>
+
+        <p></p>
+      </section>
+    </main>
+
+    <!-- CATEGORIES SECTION: Displays product categories as a grid of cards -->
+    <section id="categories">
+      <h2>CATEGORIES</h2>
+
+      <div id="category-list">
+        <article onclick="openCategory('groceries')" style="cursor: pointer;">
+          <p>Groceries</p>
+        </article>
+
+        <article onclick="openCategory('pharmacy')" style="cursor: pointer;">
+          <p>Pharmacy</p>
+        </article>
+
+        <article onclick="openCategory('personal_care')" style="cursor: pointer;">
+          <p>Personal Care</p>
+        </article>
+
+        <article onclick="openCategory('electronics')" style="cursor: pointer;">
+          <p>Electronics</p>
+        </article>
+
+    </section>
+
+    <!-- FOOTER: Displays copyright and site information at the bottom of the page -->
+    <footer>
+      <p>Price-Pulse — Track, compare, and save on everyday essentials.</p>
+    </footer>
+
+    <!-- Connect JS script -->
+    <script src="../homepage/homepage.js"></script>
+  </body>
+</html>
