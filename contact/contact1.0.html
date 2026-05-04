@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Price-Pulse – Contact Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../contact/contact.css" />
+  </head>
+
+  <body>
+    <!-- HEADER / NAVBAR: Contains the logo, navigation links, and login/register buttons -->
+    <header>
+      <div>
+        <a href="../homepage/homepage.html">Price-Pulse</a>
+      </div>
+
+      <nav>
+        <a href="../homepage/homepage.html">Home</a>
+        <a href="../homepage/homepage.html#categories">Categories</a>
+        <a href="../trending/trending.html">Trending</a>
+        <a href="../contact/contact1.0.html">Contact</a>
+      </nav>
+
+      <div>
+        <a href="../auth/login.html">Login</a>
+        <a href="../auth/register.html">Register</a>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT: Wraps the contact page title, info cards, and contact form -->
+    <main>
+
+      <!-- CONTACT TITLE: Displays the main heading of the page -->
+      <div class="page-title">
+        <h1>Contact Price Pulse</h1>
+      </div>
+
+      <!-- CONTACT OPTIONS: Displays contact methods like Email, Phone, and Live Chat in a grid -->
+      <section>
+        <h2>Have Any Questions? We're Here To Help!</h2>
+
+        <div>
+          <div>
+            <span>Email</span>
+            <p>SupportPricePulse@gmail.com</p>
+          </div>
+
+          <div>
+            <span>Phone</span>
+            <p>
+              +201040126620<br />
+              +201237589937
+            </p>
+          </div>
+
+          <div>
+            <span>Live Chat</span>
+            <p>(9AM–5PM)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORM SECTION: Contains the inputs and textarea for users to send a message -->
+      <section class="contact-form-container">
+        <h2 class="form-title">Send Us A Message</h2>
+        <form action="#" method="post">
+          <div>
+            <label for="name">Name:</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div>
+            <label for="subject">Subject:</label>
+            <input id="subject" name="subject" type="text" />
+          </div>
+
+          <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER: Displays copyright and site information at the bottom of the page -->
+    <footer>
+      <p>Price-Pulse — Track, compare, and save on everyday essentials.</p>
+    </footer>
+
+    <!-- Connect JS script -->
+    <script src="../homepage/homepage.js"></script>
+  </body>
+</html>
