@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Pulse – Admin</title>
+    <!-- Viewport tag ensures the website looks good on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link out to our CSS Stylesheets (homepage for basics, admin for specific layout rules) -->
+    <link rel="stylesheet" href="../homepage/homepage.css">
+    <link rel="stylesheet" href="../admin/admin.css?v=3">
+</head>
+<body>
+
+    <!-- ============================================== -->
+    <!-- HEADER / NAVBAR matching homepage -->
+    <!-- ============================================== -->
+    <header>
+      <div style="position: relative;">
+        <!-- Brand Logo / Title Link -->
+        <a href="../homepage/homepage.html">Price-Pulse</a>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="menu-toggle" onclick="document.getElementById('adminDropdown').style.display = document.getElementById('adminDropdown').style.display === 'block' ? 'none' : 'block'">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <!-- Administrator Dropdown Menu (Toggleable visibility) -->
+        <div id="adminDropdown" style="display:none; position:absolute; top:45px; left:0; background:white; padding:15px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); z-index:100; min-width: 180px;">
+           <a href="../admin/admin.html" style="display:block; margin-bottom:10px; font-weight:600; color:#1e1b4b;">Admin Dashboard</a>
+           <a href="../productlist/productlist.html?admin=true" style="display:block; font-weight:600; color:#1e1b4b;">Manage Products</a>
+           <hr style="border:none; border-top:1px solid #f1f5f9; margin: 10px 0;">
+           <a href="../auth/login.html" onclick="if(confirm('Are you sure you want to log out?')){localStorage.removeItem('loggedInUser');return true;}return false;" style="display:block; font-weight:600; color:#e11d48;">Log out</a>
+        </div>
+      </div>
+
+      <!-- Empty flex filler for centering alignment -->
+      <nav></nav>
+
+      <!-- Profile Settings Bubble Icon -->
+      <div>
+        <div class="profile-icon" style="cursor:pointer; background: var(--accent); color: var(--white); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);" onclick="window.location.href='../profile/profile.html'">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+        <!-- ============================================== -->
+        <!-- Admin Dashboard Hero Header Banner             -->
+        <!-- ============================================== -->
+        <div class="admin-hero-banner">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome back! Manage the products, prices, and categories from here.</p>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- Admin Main Content Wrapper                     -->
+        <!-- ============================================== -->
+        <section class="admin-content">
+
+            <!-- 1. Quick Statistics Cards Row -->
+            <section class="admin-stats">
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <p>20</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Categories</h3>
+                    <p>4</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Registered Users</h3>
+                    <!-- Dynamic variable tracking actual users in SQLite -->
+                    <p id="userCount">0</p>
+                </div>
+            </section>
+            
+            <!-- Inline Mini-Script just fetching the User Count specifically -->
+            <script>
+                fetch('http://localhost:3000/auth/user-count')
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById("userCount").textContent = data.count || 0;
+                    })
+                    .catch(() => {
+                        document.getElementById("userCount").textContent = '?';
+                    });
+            </script>
+
+            <!-- 2. Store Level Click Analytics Table -->
+            <section class="admin-form-section" style="margin-top: 0; margin-bottom: 30px;">
+                <div class="form-container" style="max-width: 100%;">
+                    <h3>📉 Store Clicks Analytics</h3>
+                    <div style="background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; padding: 15px;">
+                        
+                        <!-- Table structuring for clicks -->
+                        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid #f1f5f9; color: var(--primary);">
+                                    <th style="padding: 10px;">Store Name</th>
+                                    <th style="padding: 10px; text-align: right;">Total Clicks</th>
+                                </tr>
+                            </thead>
+                            <!-- The tbody starts empty, but will be filled by JSON dynamically -->
+                            <tbody id="storeClicksTableBody">
+                                <tr><td colspan="2" style="text-align:center; padding: 10px; color:#999;">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Inline Mini-Script filling the table -->
+            <script>
+                fetch('http://localhost:3000/admin/store-clicks')
+                    .then(res => res.json())
+                    .then(data => {
+                        const tbody = document.getElementById("storeClicksTableBody");
+                        if (!data || data.length === 0) {
+                            tbody.innerHTML = '<tr><td colspan="2" style="text-align:center; padding: 10px; color:#999;">No clicks recorded yet.</td></tr>';
+                            return;
+                        }
+                        tbody.innerHTML = '';
+                        // Loop through SQL data drawing a specific row per store
+                        data.forEach(store => {
+                            const tr = document.createElement("tr");
+                            tr.style.borderBottom = "1px solid #f1f5f9";
+                            tr.innerHTML = `
+                                <td style="padding: 12px 10px; font-weight: 600; color: var(--primary);">🏪 ${store.store_name}</td>
+                                <td style="padding: 12px 10px; text-align: right; font-weight: 700; color: var(--accent);">${store.click_count || 0}</td>
+                            `;
+                            tbody.appendChild(tr);
+                        });
+                    })
+                    .catch(() => {
+                        document.getElementById("storeClicksTableBody").innerHTML = '<tr><td colspan="2" style="text-align:center; padding: 10px; color:red;">Failed to load data.</td></tr>';
+                    });
+            </script>
+
+            <!-- 3. The Main Control Panel (Add/Edit Product Menu) -->
+            <section class="admin-form-section">
+                <!-- Data Entry Form wrapped in 'form-container' -->
+                <div class="form-container">
+                    <h3>Add New Product</h3>
+                    <form id="addProductForm">
+                        
+                        <!-- Simple Product Attributes -->
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" placeholder="e.g. Juhayna Milk 1L" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="pharmacy">Pharmacy</option>
+                                <option value="personal-care">Personal Care</option>
+                                <option value="electronics">Electronics</option>
+                            </select>
+                        </div>
+
+                        <!-- Complex Dynamic Setting for Mapping Stores / Prices / Links -->
+                        <div class="form-group">
+                            <label>Stores & Prices</label>
+                            <div id="storesContainer">
+                                
+                                <!-- Baseline single store configuration row -->
+                                <div class="store-entry" data-index="0">
+                                    <div class="form-row" style="grid-template-columns: 1fr 1fr; margin-bottom: 8px;">
+                                        <div class="form-group" style="margin-bottom: 0;">
+                                            <input type="text" class="store-name-input" placeholder="e.g. Carrefour" required>
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0;">
+                                            <input type="number" class="store-price-input" placeholder="Price (EGP)" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0; margin-top: 8px;">
+                                        <input type="url" class="store-link-input" placeholder="Store Product Link URL (e.g. https://...)">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!-- A button firing addStoreRow() from our admin.js logic -->
+                            <button type="button" class="add-store-btn" onclick="addStoreRow()">+ Add Another Store</button>
+                        </div>
+
+                        <!-- Final Metadata Fields -->
+                        <div class="form-group">
+                            <label for="productDescription">Description</label>
+                            <textarea id="productDescription" rows="4" placeholder="Brief product description..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productImage">Product Image (URL)</label>
+                            <input type="url" id="productImage" placeholder="https://example.com/image.jpg">
+                        </div>
+
+                        <!-- The SUBMIT Button -->
+                        <button type="submit" class="submit-btn">Add Product</button>
+                    </form>
+                </div>
+
+                <!-- 4. Global Inventory List (Right Side Panel) -->
+                <div class="recent-actions">
+                    <h3>Product Inventory</h3>
+                    <!-- Javascript actively takes over 'adminInventoryList' filling it with HTML -->
+                    <ul class="action-list" id="adminInventoryList">
+                        <!-- Populated completely automatically by admin.js ! -->
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- FOOTER -->
+    <!-- ============================================== -->
+    <footer>
+      <p>Price-Pulse — Track, compare, and save on everyday essentials. (Admin Panel)</p>
+    </footer>
+
+    <!-- Direct connection to our business logic layer -->
+    <script src="admin.js"></script>
+</body>
+</html>
