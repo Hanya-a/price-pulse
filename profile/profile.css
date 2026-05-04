@@ -1,0 +1,220 @@
+/* ============================================================ */
+/* profile.css - Master Profile Design Setup                    */
+/* ============================================================ */
+
+/* Definition of global color variables to quickly reuse them across the page */
+:root {
+    --bg-color: #9cbdf6;
+    /* Light blue background inspired from the homepage mockup */
+    --text-color: #000000;
+    --secondary-color: #2b5cb3;
+    /* Dark blue used in navigation headers */
+    --coin-gold-1: #facc15;
+    --coin-gold-2: #eab308;
+    --coin-border: #ca8a04;
+    --coin-shadow: #a16207;
+}
+
+/* Hard reset overriding default browser margins so our design spans edge-to-edge */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Master body container settings */
+body {
+    font-family: 'Poppins', sans-serif; /* Set the main sleek font */
+    background: var(--hero-bg) !important; /* Import dynamic blue gradient */
+    min-height: 100vh; /* Ensure body takes up the full screen vertically */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden; /* Stop page from sliding left/right accidentally */
+}
+
+/* ============================================================ */
+/* Form Container and Wrappers                                  */
+/* ============================================================ */
+
+#profileForm {
+    display: block;
+    width: 100%;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* This flex-wrapper pushes the popup form into the utter center of the screen */
+.form-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    padding: 2rem 1rem;
+}
+
+/* The actual physical 'card' box holding the inputs */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* "Glassmorphism" effect: Making the profile form glassy, blurred and semi-transparent */
+.form-container.profile-container {
+    padding: 2.5rem 2rem;
+    background: rgba(255, 255, 255, 0.15); /* Slight white aesthetic backdrop */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Deep soft shadow */
+    
+    /* Blurs the background behind the box */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Profile Title */
+.form-container h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+}
+
+/* Profile description text right under the title */
+.switch-page-top {
+    font-size: 12px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 2rem;
+}
+
+/* ============================================================ */
+/* Input Forms and Styling                                      */
+/* ============================================================ */
+
+/* Wrapper for every Label + Input pair */
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* Little text above the actual fillable boxes */
+.input-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #111;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* The physical typing boxes (Text, Date, Gender Dropdown, etc) */
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    
+    /* Profile slightly modernized to simple white square with small rounded edge */
+    background-color: #fff;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Make sure the "mm/dd/yyyy" placeholder text on date inputs is grey until filled */
+.input-group input[type="date"] {
+    color: #555;
+}
+.input-group input[type="date"]:valid {
+    color: #000;
+}
+
+/* ============================================================ */
+/* Custom Dropdown Arrow Overrides                              */
+/* ============================================================ */
+
+/* Wraps the Gender Dropdown to allow drawing a custom arrow */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Draws a custom little downwards triangle strictly for the select box */
+.select-wrapper::after {
+    content: "\25BC";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0.6) scaleX(1.2);
+    font-size: 12px;
+    color: #000;
+    pointer-events: none;
+}
+
+/* Hides the ugly default operating system dropdown arrow */
+.input-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Change color to black when someone clicks the selector */
+.input-group select:focus {
+    color: #000;
+}
+
+/* Setup generic placeholder text as grey */
+.input-group input::placeholder {
+    color: #555;
+    font-weight: 400;
+}
+
+/* Highlight boxes with a black glow ring when user clicks to type in them */
+.input-group input:focus,
+.input-group select:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+    border-color: #000;
+}
+
+/* ============================================================ */
+/* Interactive UI Buttons                                       */
+/* ============================================================ */
+
+/* Big black 'Confirm' button at the bottom of the profile */
+.submit-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    text-transform: lowercase; /* Matches 'confirm' mockup aesthetic */
+    transition: background-color 0.2s, transform 0.1s;
+    border-radius: 4px;
+}
+
+/* Subtle grey flash when hovered hovering */
+.submit-btn:hover {
+    background-color: #222;
+}
+
+/* Physically shrinks the button making it feel like a real pressed button */
+.submit-btn:active {
+    transform: scale(0.97);
+}

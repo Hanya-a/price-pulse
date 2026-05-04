@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price-Pulse – Profile</title>
+    <link rel="stylesheet" href="../homepage/homepage.css" />
+    <link rel="stylesheet" href="profile.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div style="position: relative; display: flex; align-items: center; gap: 15px;">
+        <a href="../homepage/homepage.html" style="color:var(--accent); font-weight:800; font-size:1.6rem; display:flex; align-items:center;">
+            Price-Pulse
+        </a>
+
+        <!-- Hamburger menu that reveals the navigation options -->
+        <button class="menu-toggle" onclick="document.getElementById('profileDropdown').style.display = document.getElementById('profileDropdown').style.display === 'block' ? 'none' : 'block'">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- The Menu dropdown containing Home and Contact -->
+        <div id="profileDropdown" style="display:none; position:absolute; top:45px; left:0; background:white; padding:15px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); z-index:100; min-width: 180px;">
+           <a href="../homepage/homepage.html?menu=1" style="display:block; margin-bottom:10px; font-weight:600; color:#1e1b4b;">Home</a>
+           <a href="../trending/trending.html" style="display:block; margin-bottom:10px; font-weight:600; color:#1e1b4b;">Trending</a>
+           <a href="../contact/contact1.0.html" style="display:block; font-weight:600; color:#1e1b4b;">Contact</a>
+           <hr style="border:none; border-top:1px solid #f1f5f9; margin: 10px 0;">
+           <a href="../auth/login.html" onclick="if(confirm('Are you sure you want to log out?')){localStorage.removeItem('loggedInUser');return true;}return false;" style="display:block; font-weight:600; color:#e11d48;">Log out</a>
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div>
+        <div class="profile-icon" style="cursor:pointer; background: var(--accent); color: var(--white); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);" onclick="window.location.href='../profile/profile.html'">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <section class="form-wrapper" style="min-height: calc(100vh - 80px);">
+      <div class="form-container profile-container">
+        <h1 style="font-weight: 900; font-size: 38px; margin-bottom: 0px; color: #000; letter-spacing: -1px;">Profile</h1>
+        <p class="switch-page-top" style="margin-bottom: 2rem; margin-top: 4px; color: #333;">Update your personal details below.</p>
+        <form id="profileForm" action="#" method="POST">
+          <div class="input-group">
+            <label for="fullName">FULL NAME</label>
+            <input type="text" id="fullName" name="fullName" placeholder="John Doe" required />
+          </div>
+          
+          <div class="input-group">
+            <label for="dob">DATE OF BIRTH</label>
+            <input type="date" id="dob" name="dob" required />
+          </div>
+          
+          <div class="input-group">
+            <label for="email">EMAIL</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required />
+          </div>
+          
+          <div class="input-group">
+            <label for="gender">GENDER</label>
+            <div class="select-wrapper">
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="confirmBtn">confirm</button>
+        </form>
+      </div>
+      </section>
+    </main>
+
+    <script src="profile.js"></script>
+  </body>
+</html>
