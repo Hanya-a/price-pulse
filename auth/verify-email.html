@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price-Pulse – Verify Email</title>
+    <link rel="stylesheet" href="../homepage/homepage.css" />
+    <link rel="stylesheet" href="../auth/login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header>
+      <div>
+        <a href="../homepage/homepage.html">Price-Pulse</a>
+      </div>
+
+      <nav>
+        <a href="../homepage/homepage.html">Home</a>
+        <a href="../homepage/homepage.html#categories">Categories</a>
+        <a href="../trending/trending.html">Trending</a>
+        <a href="../contact/contact1.0.html">Contact</a>
+      </nav>
+
+      <div>
+        <a href="../auth/login.html">Login</a>
+        <a href="../auth/register.html">Register</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="form-wrapper">
+      <div class="form-container">
+        <h1>Verify Email</h1>
+        <p class="switch-page-top" style="margin-bottom: 2rem;">
+          We've sent a 6-digit verification code to your email address.
+        </p>
+
+        <form action="#" method="POST">
+          <div class="input-group">
+            <label for="code">VERIFICATION CODE</label>
+            <input type="text" id="code" name="code" placeholder="123456" required />
+          </div>
+          <button type="submit" class="submit-btn mt-4">verify</button>
+        </form>
+
+        <p class="switch-page">
+          DIDN'T RECEIVE THE CODE? <a href="#" style="text-decoration: underline;">RESEND</a>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

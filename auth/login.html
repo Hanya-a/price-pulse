@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price-Pulse – Login</title>
+    <link rel="stylesheet" href="../homepage/homepage.css" />
+    <link rel="stylesheet" href="../auth/login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header>
+      <div>
+        <a href="../homepage/homepage.html">Price-Pulse</a>
+      </div>
+
+      <nav>
+        <a href="../homepage/homepage.html">Home</a>
+        <a href="../homepage/homepage.html#categories">Categories</a>
+        <a href="../trending/trending.html">Trending</a>
+        <a href="../contact/contact1.0.html">Contact</a>
+      </nav>
+
+      <div>
+        <a href="../auth/login.html">Login</a>
+        <a href="../auth/register.html">Register</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="form-wrapper">
+      <div class="form-container">
+        <h1>Login</h1>
+        <form id="loginform" action="#" method="POST">
+          <div class="input-group">
+            <label for="email">EMAIL</label>
+            <input type="email" id="email" name="email" placeholder="hello@reallygreatsite.com" required />
+          </div>
+          <div class="input-group">
+            <label for="password">PASSWORD</label>
+            <input type="password" id="password" name="password" placeholder="******" required />
+          </div>
+          <div style="text-align: right; font-size: 11px; margin-top: -0.75rem; margin-bottom: 1.5rem;">
+             <a href="../auth/forgot-password.html" style="color: #333; text-decoration: underline; font-weight: 600;">Forgot Password?</a>
+          </div>
+          <button type="submit" class="submit-btn">login</button>
+        </form>
+        <div id="message" style="margin-top: 1rem; font-size: 14px; min-height: 1.5em;"></div>
+        <p class="switch-page">
+          DON'T HAVE AN ACCOUNT? <a href="../auth/register.html">REGISTER</a>
+        </p>
+      </div>
+    </main>
+    <script src="login.js"></script>
+  </body>
+</html>

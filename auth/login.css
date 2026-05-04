@@ -1,0 +1,238 @@
+/* login.css */
+
+:root {
+    --bg-color: #9fb8ea;
+    /* Matched to homepage hero */
+    --text-color: #000000;
+    --secondary-color: #2b5cb3;
+    /* Dark blue used in header */
+    --coin-gold-1: #facc15;
+    --coin-gold-2: #eab308;
+    --coin-border: #ca8a04;
+    --coin-shadow: #a16207;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Coins (using homepage style) */
+.form-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+        url("../assets/coin.png"),
+        url("../assets/coin.png"),
+        url("../assets/coin.png"),
+        url("../assets/coin.png"),
+        url("../assets/coin.png"),
+        url("../assets/coin.png"),
+        url("../assets/coin.png"),
+        url("../assets/coin.png");
+    background-repeat: no-repeat;
+    background-size:
+        90px,
+        70px,
+        105px,
+        60px,
+        85px,
+        95px,
+        65px,
+        110px;
+    background-position:
+        3% 12%,
+        18% 2%,
+        74% 10%,
+        96% 28%,
+        24% 76%,
+        58% 86%,
+        82% 92%,
+        0% 88%;
+    animation: floatCoins 12s ease-in-out infinite;
+}
+
+.form-wrapper > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Form Styles */
+.form-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    padding: 2rem 1rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 360px;
+    /* Mockup form is quite narrow */
+    text-align: center;
+}
+
+/* Reset homepage.css form overrides */
+.form-container form {
+    display: block;
+    width: 100%;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.form-container h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  letter-spacing: -0.5px;
+}
+
+.switch-page-top {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 2rem;
+}
+
+.switch-page-top a {
+  color: #111;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #111;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #000;
+  border-radius: 0; /* Square edges as requested by mockup style */
+  background-color: #fff;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Dropdown arrow wrapper */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0.6) scaleX(1.2);
+  font-size: 12px;
+  color: #000;
+  pointer-events: none;
+}
+
+.input-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #555;
+}
+
+.input-group select:focus {
+  color: #000;
+}
+
+.input-group input::placeholder {
+  color: #555;
+  font-weight: 400;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+  border-color: #000;
+}
+
+.submit-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 0; /* Reset border radius from homepage button */
+    width: 140px;
+    /* Mockup button is not full width */
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    text-transform: lowercase;
+    /* Button text is lowercase in mockup */
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+    background-color: #222;
+}
+
+.submit-btn:active {
+    transform: scale(0.97);
+}
+
+.submit-btn.mt-4 {
+    margin-top: 1rem;
+}
+
+.switch-page {
+    font-size: 10px;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+.switch-page a {
+    color: #333;
+    text-decoration: underline;
+    margin-left: 4px;
+}
+
+.switch-page a:hover {
+    color: #000;
+}
