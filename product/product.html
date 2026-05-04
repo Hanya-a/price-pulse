@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Pulse – Product Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare prices for this product across stores near you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../homepage/homepage.css">
+    <link rel="stylesheet" href="product.css?v=1.1">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+      <div style="position: relative; display: flex; align-items: center; gap: 15px;">
+        <a href="../homepage/homepage.html" style="color:var(--accent); font-weight:800; font-size:1.6rem; display:flex; align-items:center;">
+            Price-Pulse
+        </a>
+        <button class="menu-toggle" onclick="document.getElementById('productDropdown').style.display = document.getElementById('productDropdown').style.display === 'block' ? 'none' : 'block'">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="productDropdown" style="display:none; position:absolute; top:45px; left:0; background:white; padding:15px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); z-index:100; min-width: 180px;">
+           <a href="../homepage/homepage.html?menu=1" style="display:block; margin-bottom:10px; font-weight:600; color:#1e1b4b;">Home</a>
+           <a href="../trending/trending.html" style="display:block; margin-bottom:10px; font-weight:600; color:#1e1b4b;">Trending</a>
+           <a href="../contact/contact1.0.html" style="display:block; font-weight:600; color:#1e1b4b;">Contact</a>
+           <hr style="border:none; border-top:1px solid #f1f5f9; margin: 10px 0;">
+           <a href="../auth/login.html" onclick="if(confirm('Are you sure you want to log out?')){localStorage.removeItem('loggedInUser');return true;}return false;" style="display:block; font-weight:600; color:#e11d48;">Log out</a>
+        </div>
+      </div>
+
+      <nav style="display:flex; justify-content:center; flex:1;">
+        <form onsubmit="executeSearch(); return false;" style="margin: 0; width: min(500px, 100%); padding: 8px 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06);">
+          <input type="search" id="productSearchInput" placeholder="Search for products..." style="padding: 6px 10px;">
+          <button type="button" onclick="executeSearch()" style="padding: 8px 20px;">Search</button>
+        </form>
+      </nav>
+
+      <div>
+        <div class="profile-icon" style="cursor:pointer; background: var(--accent); color: var(--white); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);" onclick="window.location.href='../profile/profile.html'">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+        <!-- HERO SPLIT -->
+        <section class="product-hero">
+            <div class="hero-bg-shapes"></div>
+
+            <div class="hero-inner">
+                <!-- Left: Image -->
+                <div class="hero-image-wrap" id="productImageContainer">
+                    <!-- JS fills this -->
+                </div>
+
+                <!-- Right: Info -->
+                <div class="hero-info">
+                    <h1 id="productTitle">Loading…</h1>
+                    <span class="hero-category-badge" id="productCategory">Category</span>
+                    <p id="productDescription" class="hero-description"></p>
+
+                    <div class="hero-stats" id="heroStats">
+                        <div class="stat-chip">
+                            <span class="stat-label">Lowest Price</span>
+                            <span class="stat-value" id="statLowest">—</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-chip">
+                            <span class="stat-label">Highest Price</span>
+                            <span class="stat-value" id="statHighest">—</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-chip">
+                            <span class="stat-label">Stores</span>
+                            <span class="stat-value" id="statStores">—</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORE COMPARISON -->
+        <section class="comparison-section">
+            <div class="comparison-toolbar">
+                <div class="toolbar-left">
+                    <h2>🏪 Compare Stores</h2>
+                    <p id="sortLabel" class="sort-label">Sorted by lowest price</p>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button id="sortCheapestBtn" class="locate-btn" onclick="sortByCheapest()" style="background:var(--accent); color:var(--white);">
+                        💵 Sort by Cheapest
+                    </button>
+                    <button id="locateMeBtn" class="locate-btn" onclick="calculateDistances()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>
+                        Sort by Distance
+                    </button>
+                </div>
+            </div>
+
+            <div id="storeListContainer" class="store-grid">
+                <!-- JS renders cards here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="product.js"></script>
+</body>
+</html>
