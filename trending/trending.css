@@ -1,0 +1,82 @@
+/* ============================================================ */
+/* trending.css - Styling for the Trending Products display     */
+/* ============================================================ */
+
+/* 
+ * The main wrapper box holding the entire trending section.
+ * Using body>main ensures we only edit the <section id="trending">
+ * without accidentally editing anything else.
+ */
+body>main>section#trending {
+  background: var(--white);
+  padding: 80px 20px 80px; 
+  /* Makes sure the page doesn't look empty even if only 1 item is trending */
+  min-height: 70vh; 
+}
+
+/* The "🔥 TRENDING PRODUCTS" Header title */
+body>main>section#trending h2 {
+  text-align: center;
+  color: var(--primary); /* Deep blue color from homepage variables */
+  font-size: 2rem;
+  letter-spacing: 0.14em; /* Spreads the letters slightly for a cinematic look */
+  margin-bottom: 8px;
+}
+
+/* 
+ * The Grid Container
+ * This is the invisible box that flexes and wraps the product rectangles
+ */
+#trending-list {
+  width: min(1100px, 100%); /* Limits maximum width so it doesn't stretch infinitely on big screens */
+  margin: 0 auto;           /* Centers the box horizontally */
+  display: flex;            /* Turns on flexbox layout */
+  flex-wrap: wrap;          /* Forces items to wrap to a new line when out of space */
+  justify-content: center;  /* Centers the squares themselves */
+  gap: 20px;                /* Puts a 20 pixel gap between squares */
+}
+
+/* 
+ * The Physical Product Card
+ * Created dynamically in JS: article.className = "trending-card"
+ */
+.trending-card {
+  background: var(--white);
+  border: 1px solid #e5e7eb;  /* Thin grayish border */
+  border-radius: 16px;        /* Round the edges */
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* Initial soft drop shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* Makes the hover-jump smooth instead of instantaneous */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  /* Flexbox rules: Shrinks if needed, but tries to be 200px wide up to 240px */
+  flex: 1 1 200px;
+  max-width: 240px;
+}
+
+/* 
+ * Hover Animation 
+ * When the user's mouse floats over a trending product card...
+ */
+.trending-card:hover {
+  transform: translateY(-5px); /* Lift the card UP visually by 5 pixels */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Darken the shadow underneath it to look 3D */
+}
+
+/* 
+ * The Product Name (Text Title inside the card) 
+ */
+.trending-card h4 {
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 12px 0 6px;
+  line-height: 1.3;
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Price-Pulse – Trending</title>
+    <!-- Screen scaling rule ensuring the website fits nicely on mobile phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Design files bridging -->
+    <link rel="stylesheet" href="../homepage/homepage.css" />
+    <link rel="stylesheet" href="trending.css" />
+  </head>
+
+  <body>
+    <!-- ============================================== -->
+    <!-- HEADER / NAVBAR                                -->
+    <!-- ============================================== -->
+    <header>
+      <!-- Website Branding / Logo -->
+      <div>
+        <a href="../homepage/homepage.html">Price-Pulse</a>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav>
+        <a href="../homepage/homepage.html">Home</a>
+        <a href="../homepage/homepage.html#categories">Categories</a>
+        <a href="../trending/trending.html">Trending</a>
+        <a href="../contact/contact1.0.html">Contact</a>
+      </nav>
+
+      <!-- User Account Buttons (These will be visually modified by JavaScript if the user logs in) -->
+      <div>
+        <a href="../auth/login.html">Login</a>
+        <a href="../auth/register.html">Register</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================================== -->
+      <!-- TRENDING PRODUCTS SECTION                      -->
+      <!-- ============================================== -->
+      <section id="trending">
+        <h2>🔥 TRENDING PRODUCTS</h2>
+        <p style="text-align:center; color:#666; margin-bottom:1.5rem;">Most popular products this week</p>
+        
+        <!-- 
+          The empty container box.
+          This will be completely overwritten by 'trending.js' which 
+          downloads the SQL data and injects physical HTML blocks representing 
+          products directly into this space. 
+        -->
+        <div id="trending-list">
+          <!-- Text shown temporarily while waiting for the database response -->
+          <p style="text-align:center; color:#999;">Loading trending products...</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- FOOTER                                         -->
+    <!-- ============================================== -->
+    <footer>
+      <p>Price-Pulse — Track, compare, and save on everyday essentials.</p>
+    </footer>
+
+    <!-- Logic bridge - Activates the trending JS file -->
+    <script src="trending.js"></script>
+  </body>
+</html>
