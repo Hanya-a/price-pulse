@@ -1,0 +1,264 @@
+/* Product List Overrides */
+
+/* Make the whole background the dark hero blue from the homepage */
+body {
+    background: var(--hero-bg) !important;
+}
+
+/* OVERRIDES */
+body {
+    background: var(--hero-bg) !important;
+}
+
+/* Make Log out button stylistically identical to Admin */
+.logout-btn {
+    background: #fff1f2 !important;
+    color: #e11d48 !important;
+    border: 1px solid #fecdd3 !important;
+    box-shadow: none !important;
+    border-radius: 999px;
+    padding: 10px 24px !important;
+    font-weight: 600;
+}
+.logout-btn:hover {
+    background: #ffe4e6 !important;
+}
+
+/* TOOLBAR & SEARCH (Moved off Navbar) */
+.productlist-toolbar {
+    max-width: 1400px;
+    margin: 0 auto 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 10;
+}
+
+.productlist-toolbar .page-title h2 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.productlist-toolbar .page-title p {
+    color: #eef2ff;
+    font-size: 1.05rem;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.search-input-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 10px 20px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.search-input-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #0f172a;
+    background: transparent;
+}
+
+.search-input-box button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #64748b;
+    transition: color 0.2s;
+}
+
+.search-input-box button:hover {
+    color: var(--accent);
+}
+
+/* GRID CONTAINER */
+.products-grid-section {
+    min-height: calc(100vh - 80px) !important;
+    padding: 50px 40px 100px !important;
+    display: block !important; /* override homepage.css flex center */
+    align-items: flex-start !important; /* override */
+    justify-content: flex-start !important; /* override */
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* PRODUCT CARDS */
+.product-item {
+    background: #ffffff;
+    border-radius: 35px;
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* The mockup has name left-aligned */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.product-item:hover {
+    transform: translateY(-8px);
+}
+
+/* THUMBNAIL (Placeholder CSS Art exactly matching the mockup) */
+.thumb-container {
+    width: 100%;
+    aspect-ratio: 1.15 / 1; /* slightly wider than perfectly square */
+    border-radius: 28px;
+    margin-bottom: 20px;
+    border: 1.5px solid #1e293b;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.thumb-container img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    z-index: 5;
+    position: relative;
+}
+
+/* CSS Art for the "Hill & Cloud" placeholder seen in the mockup */
+.thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #dbeafe; /* Light blue sky */
+    position: absolute;
+    inset: 0;
+}
+
+/* The Green Hill */
+.thumb-placeholder::before {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: -15%;
+    width: 130%;
+    height: 45%;
+    background: #84cc16; /* Grass green */
+    border-radius: 50% 50% 0 0; /* Creates the curve */
+    box-shadow: inset 0 10px 0 rgba(255,255,255,0.1);
+}
+
+/* The Cloud */
+.thumb-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 25px;
+    background: #ffffff;
+    border-radius: 30px;
+}
+
+/* The bumps on the cloud */
+.thumb-container .thumb-placeholder::after {
+    box-shadow: 0 -10px 0 -2px #ffffff, 
+                12px -5px 0 -4px #ffffff, 
+                -12px -5px 0 -4px #ffffff;
+}
+
+/* CARD TEXT */
+.product-item h3 {
+    font-size: 1.15rem;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 6px;
+    text-align: left;
+    padding-left: 8px;
+    letter-spacing: -0.01em;
+}
+
+.product-item .product-store {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Highlight the price explicitly to be super clear! */
+.product-item .product-price {
+    color: var(--accent-dark);
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-align: left;
+    width: 100%;
+    margin-top: 5px;
+    padding-left: 8px;
+    background: #f1f5f9;
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1100px) {
+    .productlist-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .search-input-box {
+        width: 100%; /* Stretch search input mobile */
+    }
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    header.productlist-header {
+        grid-template-columns: 1fr auto !important;
+        grid-template-rows: auto auto;
+        gap: 15px;
+    }
+    
+    .nav-search-container {
+        grid-column: 1 / -1;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
